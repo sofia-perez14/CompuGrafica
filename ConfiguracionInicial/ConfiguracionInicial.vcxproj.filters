@@ -14,16 +14,11 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Archivos de origen\Shader">
-      <UniqueIdentifier>{fa6239b6-d037-4d09-9660-c6056f4c6f65}</UniqueIdentifier>
+      <UniqueIdentifier>{4b435d0a-c7f5-4c4d-8344-2a0e9a841e6f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Main_P3.cpp">
+    <ClCompile Include="Main_Modelado.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,5 +29,10 @@
     <None Include="Shader\core.vs">
       <Filter>Archivos de origen\Shader</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Shader.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
