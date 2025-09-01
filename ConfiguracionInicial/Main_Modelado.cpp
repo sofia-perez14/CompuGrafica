@@ -1,3 +1,12 @@
+/*
+========================================================================================================
+Alumno: Pérez Ortiz Sofia
+No. de cuenta: 319074806
+Fecha de entrega: 22/08/2025
+
+Título: Práctica 4 Modelado Geometrico
+========================================================================================================
+*/
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -25,7 +34,7 @@ float movZ=-5.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
-	//Verificaci�n de compatibilidad 
+	//Verificación de compatibilidad 
 	// Set all the required options for GLFW
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -40,7 +49,7 @@ int main() {
 
 	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
 
-	//Verificaci�n de errores de creacion  ventana
+	//Verificación de errores de creacion  ventana
 	if (nullptr == window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -52,7 +61,7 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glewExperimental = GL_TRUE;
 
-	//Verificaci�n de errores de inicializaci�n de glew
+	//Verificación de errores de inicialización de glew
 
 	if (GLEW_OK != glewInit()) {
 		std::cout << "Failed to initialise GLEW" << std::endl;
@@ -208,29 +217,29 @@ int main() {
 		//Patas de la mesa
 		//Pata de la mesa 1
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tama�o de la pata
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f));//Posici�n de la pata
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f));//Posición de la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Pata de la mesa 2
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tama�o de la pata
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));//Posici�n de la pata
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));//Posición de la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Pata de la mesa 3
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tama�o de la pata
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));//Posici�n de la pata
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));//Posición de la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		//Pata de la mesa 4
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tama�o de la pata
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));//Posici�n de la pata
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));//Posición de la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -254,9 +263,9 @@ int main() {
 		 movX += 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //Restar a la variable un valor constante en movX
 		 movX -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar p�gina
+	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar página
 		 movY += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder p�gina
+	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder página
 		 movY -= 0.08f;
 	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		 movZ -= 0.08f;
