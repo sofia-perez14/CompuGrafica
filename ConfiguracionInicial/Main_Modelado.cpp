@@ -1,9 +1,9 @@
 /*
 ========================================================================================================
-Alumno: Pérez Ortiz Sofia
+Alumno: Perez Ortiz Sofia
 No. de cuenta: 319074806
 Fecha de entrega: 22/08/2025
-Título: Practica 4 Modelado Geometrico
+Titulo: Practica 4 Modelado Geometrico
 ========================================================================================================
 */
 #include<iostream>
