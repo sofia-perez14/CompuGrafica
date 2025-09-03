@@ -1,11 +1,9 @@
-/*
-========================================================================================================
-Alumno: Perez Ortiz Sofia
-No. de cuenta: 319074806
-Fecha de entrega: 22/08/2025
-Titulo: Practica 4 Modelado Geometrico
-========================================================================================================
-*/
+//Practica 4. Modelado Geometrico
+//Nombre: Sofia Perez Ortiz
+//Numero de cuenta: 319074806
+//Fecha de entrega 4 de septiembre del 2025
+//Descripcion: Dibujo de un capibara tipo voxel art
+
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -23,17 +21,17 @@ Titulo: Practica 4 Modelado Geometrico
 // Shaders
 #include "Shader.h"
 
-void Inputs(GLFWwindow *window);
+void Inputs(GLFWwindow* window);
 
 
 const GLint WIDTH = 800, HEIGHT = 600;
-float movX=0.0f;
-float movY=0.0f;
-float movZ=-5.0f;
+float movX = 0.0f;
+float movY = 0.0f;
+float movZ = -5.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
-	//Verificacion de compatibilidad 
+	//Verificación de compatibilidad 
 	// Set all the required options for GLFW
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -42,13 +40,13 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Modelado geometrico Previo Sofia", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "PRactica 4 Sofia Perez", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
 	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
 
-	//Verificacion de errores de creacion  ventana
+	//Verificación de errores de creacion  ventana
 	if (nullptr == window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -60,7 +58,7 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glewExperimental = GL_TRUE;
 
-	//Verificacion de errores de inicializaciÃ³n de glew
+	//Verificación de errores de inicialización de glew
 
 	if (GLEW_OK != glewInit()) {
 		std::cout << "Failed to initialise GLEW" << std::endl;
@@ -87,6 +85,8 @@ int main() {
 	// Set up vertex data (and buffer(s)) and attribute pointers
 
 
+
+	// use with Perspective Projection
 	float vertices[] = {
 		// Frente (hocico + parte delantera cuerpo)
 		-0.5f, -0.5f,  0.5f, 0.55f, 0.55f, 0.55f,
@@ -144,6 +144,8 @@ int main() {
 	};
 
 
+
+
 	GLuint VBO, VAO;
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
@@ -162,11 +164,11 @@ int main() {
 	// 4. Despues colocamos las caracteristicas de los vertices
 
 	//Posicion
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
 	//Color
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid *)(3 * sizeof(GLfloat)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -174,14 +176,14 @@ int main() {
 
 	glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
 
-	
-	glm::mat4 projection=glm::mat4(1);
+
+	glm::mat4 projection = glm::mat4(1);
 
 	projection = glm::perspective(glm::radians(45.0f), (GLfloat)screenWidth / (GLfloat)screenHeight, 0.1f, 100.0f);//FOV, Radio de aspecto,znear,zfar
 	//projection = glm::ortho(0.0f, (GLfloat)screenWidth, 0.0f, (GLfloat)screenHeight, 0.1f, 1000.0f);//Izq,Der,Fondo,Alto,Cercania,Lejania
 	while (!glfwWindowShouldClose(window))
 	{
-		
+
 		Inputs(window);
 		// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
 		glfwPollEvents();
@@ -189,19 +191,19 @@ int main() {
 		// Render
 		// Clear the colorbuffer
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 		// Draw our first triangle
 		ourShader.Use();
-		glm::mat4 model=glm::mat4(1);
-		glm::mat4 view=glm::mat4(1);
-	
+		glm::mat4 model = glm::mat4(1);
+		glm::mat4 view = glm::mat4(1);
 
-		view = glm::translate(view, glm::vec3(movX,movY, movZ)); //Valor que se encuentran en nuestras variables
+
+		view = glm::translate(view, glm::vec3(movX, movY, movZ)); //Valor que se encuentran en nuestras variables
 		view = glm::rotate(view, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
 
-		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model"); 
+		GLint modelLoc = glGetUniformLocation(ourShader.Program, "model");
 		GLint viewLoc = glGetUniformLocation(ourShader.Program, "view");
 		GLint projecLoc = glGetUniformLocation(ourShader.Program, "projection");
 
@@ -209,83 +211,67 @@ int main() {
 		glUniformMatrix4fv(projecLoc, 1, GL_FALSE, glm::value_ptr(projection));
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-	
+
 
 		glBindVertexArray(VAO);
-	
-		// Se inicializa el cuerpo del capibara
+
+		//Empieza el cuerpo del capibara
 
 		// Cuerpo
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 1.5f));   // ancho, alto, profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f)); // posición
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamanno de la pata
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f));//Posicion de la pata
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera derecha
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
-		model = glm::translate(model, glm::vec3(2.0f, 0.3f, 2.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamanno de la pata
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));//Posicion de la pata
+		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
+		model = glm::translate(model, glm::vec3(2.0f, -0.3f, 2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera izquierda
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
-		model = glm::translate(model, glm::vec3(-2.0f, 0.3f, 2.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamanno de la pata
-		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));//Posicion de la pata
+		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
+		model = glm::translate(model, glm::vec3(-2.0f, -0.3f, 2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata trasera derecha
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
-		model = glm::translate(model, glm::vec3(2.0f, 0.3f, -2.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamanno de la pata
-		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));//Posicion de la pata
+		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
+		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata trasera izquierda
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
-		model = glm::translate(model, glm::vec3(-2.0f, 0.3f, -2.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
+		model = glm::translate(model, glm::vec3(-2.0f, -0.3f, -2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Cabeza
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(1.2f, 1.0f, 1.0f));
-		model = glm::translate(model, glm::vec3(1.2f, 0.9f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.2f, 1.2f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		// Hocico
-		/*model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.8f, 0.8f, 0.8f));
-		model = glm::translate(model, glm::vec3(3.0f, 0.8f, 0.0f));
-		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		glDrawArrays(GL_TRIANGLES, 0, 36);*/
-
 		// Oreja derecha
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.2f, 0.3f, 0.2f));
-		model = glm::translate(model, glm::vec3(2.0f, 2.0f, 0.5f));
+		model = glm::translate(model, glm::vec3(0.8f, 1.8f, 0.5f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Oreja izquierda
 		model = glm::mat4(1.0f);
-		model = glm::scale(model, glm::vec3(0.2f, 0.3f, 0.2f));
-		model = glm::translate(model, glm::vec3(2.0f, 2.0f, -0.5f));
+		model = glm::translate(model, glm::vec3(0.8f, 1.8f, -0.5f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
-
 
 
 
@@ -293,7 +279,7 @@ int main() {
 		glBindVertexArray(0);
 		// Swap the screen buffers
 		glfwSwapBuffers(window);
-	
+
 	}
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
@@ -301,32 +287,25 @@ int main() {
 
 	glfwTerminate();
 	return EXIT_SUCCESS;
- }
+}
 
- void Inputs(GLFWwindow *window) {
-	 if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE Se cierra la ventana
-		 glfwSetWindowShouldClose(window, true);
-	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //Sumar a la variable un valor constante en movX
-		 movX += 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //Restar a la variable un valor constante en movX
-		 movX -= 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar página
-		 movY += 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder página
-		 movY -= 0.005f;
-		 movX -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar pagina
-		 movY += 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder pagina
-		 movY -= 0.08f;
-	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		 movZ -= 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		 movZ += 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-		 rot += 0.005f;
-	 if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-		 rot -= 0.005f;
- }
-
-
+void Inputs(GLFWwindow* window) {
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)  //GLFW_RELEASE Se cierra la ventana
+		glfwSetWindowShouldClose(window, true);
+	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //Sumar a la variable un valor constante en movX
+		movX += 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //Restar a la variable un valor constante en movX
+		movX -= 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar página
+		movY += 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder página
+		movY -= 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+		movZ -= 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+		movZ += 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		rot += 0.005f;
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		rot -= 0.005f;
+}
