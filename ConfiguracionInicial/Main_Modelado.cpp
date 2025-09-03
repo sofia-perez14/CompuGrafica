@@ -40,7 +40,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "PRactica 4 Sofia Perez", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 4 Sofia Perez", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
@@ -88,7 +88,7 @@ int main() {
 
 	// use with Perspective Projection
 	float vertices[] = {
-		// Frente (hocico + parte delantera cuerpo)
+		// Frente (parte delantera cuerpo)
 		-0.5f, -0.5f,  0.5f, 0.55f, 0.55f, 0.55f,
 		 0.5f, -0.5f,  0.5f, 0.55f, 0.55f, 0.55f,
 		 0.5f,  0.5f,  0.5f, 0.85f, 0.48f, 0.18f,
@@ -144,9 +144,68 @@ int main() {
 	};
 
 
+//Vertices con color negro para los ojitos y mas detalles
+
+	float verticesBlack[] = {
+		// Frente
+		-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		 0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		// Atrás
+		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+
+		 0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+
+		// Derecha
+		 0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+
+		 0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		 // Izquierda
+		 -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+
+		 -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		 // Abajo
+		 -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		  0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		  0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		  0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f, -0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f, -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+
+		 // Arriba
+		 -0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		  0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+		  0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+
+		  0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 0.0f,
+		 -0.5f,  0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+	};
 
 
-	GLuint VBO, VAO;
+	//Declaramos como se van a utilizar los vertices que tenemos para armar matrices de distintos colores
+	GLuint VBO, VAO, VBO2, VAO2;
+
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	//glGenBuffers(1, &EBO);
@@ -175,6 +234,26 @@ int main() {
 
 
 	glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs)
+
+	//Ahora para el color negro 
+	glGenVertexArrays(1, &VAO2);
+	glGenBuffers(1, &VBO2);
+
+	glBindVertexArray(VAO2);
+
+	glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticesBlack), verticesBlack, GL_STATIC_DRAW);
+
+	// Posición
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
+	glEnableVertexAttribArray(0);
+
+	// Color
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
+	glEnableVertexAttribArray(1);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 
 	glm::mat4 projection = glm::mat4(1);
@@ -212,12 +291,10 @@ int main() {
 		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 
-
-		glBindVertexArray(VAO);
-
 		//Empieza el cuerpo del capibara
 
 		// Cuerpo
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 1.5f));   // ancho, alto, profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f)); // posición
@@ -225,6 +302,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera derecha
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(2.0f, -0.3f, 2.0f));
@@ -232,6 +310,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera izquierda
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(-2.0f, -0.3f, 2.0f));
@@ -239,6 +318,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata trasera derecha
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(2.0f, -0.3f, -2.0f));
@@ -246,6 +326,7 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata trasera izquierda
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(0.3f, 0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(-2.0f, -0.3f, -2.0f));
@@ -253,27 +334,68 @@ int main() {
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Cabeza
+		glBindVertexArray(VAO);
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(1.2f, 1.0f, 1.0f));
 		model = glm::translate(model, glm::vec3(1.2f, 1.2f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		// Oreja derecha
+		// Nariz lado derecho
+		glBindVertexArray(VAO2);
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.8f, 1.8f, 0.5f));
+		model = glm::translate(model, glm::vec3(2.0f, 1.4f, -0.3f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		// Nariz lado izquierdo
+		glBindVertexArray(VAO2);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(2.0f, 1.4f, 0.3f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		// Boca
+		glBindVertexArray(VAO2);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(2.0f, 0.8f, -0.003f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		// Oreja derecha
+		glBindVertexArray(VAO2);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(0.8f, 1.7f, 0.5f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Oreja izquierda
+		glBindVertexArray(VAO2);
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.8f, 1.8f, -0.5f));
+		model = glm::translate(model, glm::vec3(0.8f, 1.7f, -0.5f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.3f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
+		// Ojito derecho
+		glBindVertexArray(VAO2);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(1.4f, 1.4f, 0.5f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.1f, 0.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
+		// Ojito izquierdo
+		glBindVertexArray(VAO2);
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(1.4f, 1.4f, -0.5f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.1f, 0.2f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 
 		glBindVertexArray(0);
