@@ -1,3 +1,12 @@
+/*
+========================================================================================================
+Alumno: Pérez Ortiz Sofia
+No. de cuenta: 319074806
+Fecha de entrega: 22/08/2025
+
+Título: Práctica 4 Modelado Geometrico
+========================================================================================================
+*/
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -25,7 +34,7 @@ float movZ=-5.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
-	//Verificaci�n de compatibilidad 
+	//Verificación de compatibilidad 
 	// Set all the required options for GLFW
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -40,7 +49,7 @@ int main() {
 
 	glfwGetFramebufferSize(window, &screenWidth, &screenHeight);
 
-	//Verificaci�n de errores de creacion  ventana
+	//Verificación de errores de creacion  ventana
 	if (nullptr == window)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -52,7 +61,7 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glewExperimental = GL_TRUE;
 
-	//Verificaci�n de errores de inicializaci�n de glew
+	//Verificación de errores de inicialización de glew
 
 	if (GLEW_OK != glewInit()) {
 		std::cout << "Failed to initialise GLEW" << std::endl;
@@ -209,29 +218,49 @@ int main() {
 
 		// Cuerpo
 		model = glm::mat4(1.0f);
+<<<<<<< HEAD
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 1.5f));   // ancho, alto, profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f)); // posici�n
+=======
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, 1.9f));//Posición de la pata
+>>>>>>> 369ec63464455dd058818958f7726c64615a72b6
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera derecha
 		model = glm::mat4(1.0f);
+<<<<<<< HEAD
 		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(2.0f, 0.3f, 2.0f));
+=======
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, 1.9f));//Posición de la pata
+>>>>>>> 369ec63464455dd058818958f7726c64615a72b6
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata delantera izquierda
 		model = glm::mat4(1.0f);
+<<<<<<< HEAD
 		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(-2.0f, 0.3f, 2.0f));
+=======
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(-2.9f, -0.6f, -1.9f));//Posición de la pata
+>>>>>>> 369ec63464455dd058818958f7726c64615a72b6
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		// Pata trasera derecha
 		model = glm::mat4(1.0f);
+<<<<<<< HEAD
 		model = glm::scale(model, glm::vec3(0.3f, -0.6f, 0.3f));
 		model = glm::translate(model, glm::vec3(2.0f, 0.3f, -2.0f));
+=======
+		model = glm::scale(model, glm::vec3(0.1f, 0.6f, 0.1f)); //Tamaño de la pata
+		model = glm::translate(model, glm::vec3(2.9f, -0.6f, -1.9f));//Posición de la pata
+>>>>>>> 369ec63464455dd058818958f7726c64615a72b6
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -293,11 +322,19 @@ int main() {
 	 if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) //Sumar a la variable un valor constante en movX
 		 movX += 0.005f;
 	 if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) //Restar a la variable un valor constante en movX
+<<<<<<< HEAD
 		 movX -= 0.005f;
 	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar p�gina
 		 movY += 0.005f;
 	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder p�gina
 		 movY -= 0.005f;
+=======
+		 movX -= 0.08f;
+	 if (glfwGetKey(window, GLFW_KEY_PAGE_UP) == GLFW_PRESS) //Avanzar página
+		 movY += 0.08f;
+	 if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder página
+		 movY -= 0.08f;
+>>>>>>> 369ec63464455dd058818958f7726c64615a72b6
 	 if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		 movZ -= 0.005f;
 	 if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
