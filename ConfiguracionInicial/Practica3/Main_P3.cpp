@@ -1,3 +1,10 @@
+/*
+Práctica 3
+Nombre: Pérez Ortiz Sofia
+Número de cuenta: 319074806
+Fecha de entrega: 29 de agosto de 2025
+*/
+
 #include<iostream>
 
 //#define GLEW_STATIC
@@ -30,7 +37,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecciones y transformaciones basicas", nullptr, nullptr);
+	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "Proyecciones y transformaciones basicas Sofia", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
 
