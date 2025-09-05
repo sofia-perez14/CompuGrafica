@@ -7,6 +7,7 @@
 #include<iostream>
 
 //#define GLEW_STATIC
+//Librerias OpenGL
 
 #include <GL/glew.h>
 
@@ -21,17 +22,19 @@
 // Shaders
 #include "Shader.h"
 
+// Función para procesar entradas del teclado
 void Inputs(GLFWwindow* window);
 
-
+// Tamaño de la ventana
 const GLint WIDTH = 800, HEIGHT = 600;
+// Variables para movimiento y rotacion de la vista
 float movX = 0.0f;
 float movY = 0.0f;
 float movZ = -5.0f;
 float rot = 0.0f;
 int main() {
 	glfwInit();
-	//Verificación de compatibilidad 
+	//Verificacion de compatibilidad 
 	// Set all the required options for GLFW
 	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -40,6 +43,7 @@ int main() {
 
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
+	// Creacion de la ventana
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Practica 4 Sofia Perez", nullptr, nullptr);
 
 	int screenWidth, screenHeight;
@@ -226,7 +230,7 @@ int main() {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	//Color
+	//Color naranaja con gris
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
@@ -248,7 +252,7 @@ int main() {
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)0);
 	glEnableVertexAttribArray(0);
 
-	// Color
+	// Color negro
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), (GLvoid*)(3 * sizeof(GLfloat)));
 	glEnableVertexAttribArray(1);
 
@@ -294,7 +298,7 @@ int main() {
 		//Empieza el cuerpo del capibara
 
 		// Cuerpo
-		glBindVertexArray(VAO);
+		glBindVertexArray(VAO); //A todas se les establecio el parámetro para que supiera con que color pintar.
 		model = glm::mat4(1.0f);
 		model = glm::scale(model, glm::vec3(2.0f, 1.0f, 1.5f));   // ancho, alto, profundidad
 		model = glm::translate(model, glm::vec3(0.0f, 0.6f, 0.0f)); // posición
@@ -422,12 +426,12 @@ void Inputs(GLFWwindow* window) {
 		movY += 0.005f;
 	if (glfwGetKey(window, GLFW_KEY_PAGE_DOWN) == GLFW_PRESS) //Retroceder página
 		movY -= 0.005f;
-	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) //Se acerca en z
 		movZ -= 0.005f;
-	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) //Se aleja en z
 		movZ += 0.005f;
-	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) //La camara hacia la derecha
 		rot += 0.005f;
-	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) //La camara hacia la izquierda
 		rot -= 0.005f;
 }
