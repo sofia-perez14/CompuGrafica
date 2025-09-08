@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main_Modelado.cpp" />
+    <ClInclude Include="Shader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Shader.h" />
+    <ClCompile Include="Modelado_Jerarquico.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\core.frag" />
