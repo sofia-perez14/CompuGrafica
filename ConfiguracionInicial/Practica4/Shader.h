@@ -1,3 +1,4 @@
+
 #ifndef SHADER_H
 #define SHADER_H
 
@@ -12,7 +13,6 @@ class Shader
 {
 public:
 	GLuint Program;
-	GLuint uniformColor;
 	// Constructor generates the shader on the fly
 	Shader(const GLchar *vertexPath, const GLchar *fragmentPath)
 	{
@@ -84,8 +84,6 @@ public:
 			glGetProgramInfoLog(this->Program, 512, NULL, infoLog);
 			std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << infoLog << std::endl;
 		}
-		//le damos la localidad de color
-		uniformColor = glGetUniformLocation(this->Program, "color");
 		// Delete the shaders as they're linked into our program now and no longer necessery
 		glDeleteShader(vertex);
 		glDeleteShader(fragment);
@@ -95,11 +93,6 @@ public:
 	void Use()
 	{
 		glUseProgram(this->Program);
-	}
-
-	GLuint getColorLocation()
-	{
-		return uniformColor;
 	}
 };
 
