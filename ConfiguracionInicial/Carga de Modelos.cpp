@@ -1,7 +1,7 @@
-// Previo 5: Carga de Modelos
+// Previo 6: Carga de modelos y cámara sintética
 // Nombre: Perez Ortiz Sofia
 // Numero de cuenta: 319074806
-// Fecha de entrega: 27/09/2023
+// Fecha de entrega: 21/09/2023
 
 
 // Std. Includes
@@ -39,7 +39,7 @@ void DoMovement( );
 
 
 // Camera
-Camera camera( glm::vec3( 0.0f, 0.0f, 0.0f ) );
+Camera camera( glm::vec3( 0.0f, 0.0f, 3.0f ) );
 bool keys[1024];
 GLfloat lastX = 400, lastY = 300;
 bool firstMouse = true;
