@@ -29,7 +29,7 @@
 #include "stb_image.h"
 
 // Properties
-const GLuint WIDTH = 800, HEIGHT = 600;
+const GLuint WIDTH = 1000, HEIGHT = 800;
 int SCREEN_WIDTH, SCREEN_HEIGHT;
 
 // Function prototypes
@@ -61,7 +61,7 @@ int main( )
     glfwWindowHint( GLFW_RESIZABLE, GL_FALSE );
     
     // Create a GLFWwindow object that we can use for GLFW's functions
-    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Previo 5 Sofia Perez", nullptr, nullptr );
+    GLFWwindow *window = glfwCreateWindow( WIDTH, HEIGHT, "Practica 6 Sofia Perez", nullptr, nullptr );
     
     if ( nullptr == window )
     {
@@ -100,13 +100,14 @@ int main( )
     // Setup and compile our shaders
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
-    // Load models
+    // Carga de modelos
 	Model panda((char*)"Models/uploads_files_5154962_panda_LP.obj");
     Model mariposa((char*)"Models/uploads_files_2618445_butterfly_free.obj");
     Model gecko((char*)"Models/uploads_files_6098024_Gecko.obj");
 	Model monster((char*)"Models/uploads_files_6090113_CuteBlueMonster.obj");
 	Model oveja((char*)"Models/sheep01.obj");
 	Model comedor((char*)"Models/PetBowlOBJ.obj");
+	Model fondo((char*)"Models/Grass Tent.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -135,7 +136,15 @@ int main( )
 
         // Draw the loaded model
 
-        // Dibujar modelos con sus propias transformaciones 
+        // Dibujar los modelos con sus propias transformaciones 
+
+        // Entorno
+        glm::mat4 modelFondo(1);
+        modelFondo = glm::translate(modelFondo, glm::vec3(0.0f, 0.0f, -6.0f)); // alejar el fondo
+        modelFondo = glm::scale(modelFondo, glm::vec3(2.0f));     // lo escalamos para hacerlo más grande
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelFondo));
+        fondo.Draw(shader); // Se dibuja el fondo
+
 
         // Panda
         glm::mat4 modelPanda(1);
@@ -160,7 +169,7 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelGecko));
         gecko.Draw(shader);
 
-        // Monster
+        // Monstruo
         glm::mat4 modelMonster(1);
         modelMonster = glm::translate(modelMonster, glm::vec3(2.5f, 0.0f, -2.0f));
 		modelMonster = glm::rotate(modelMonster, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
