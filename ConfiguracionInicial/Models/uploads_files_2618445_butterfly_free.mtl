@@ -13,7 +13,7 @@ illum 2
 map_Kd textures_JPG\\wing_albedo.jpg
 map_Ks textures_JPG\\wing_specular.jpg
 map_Ns textures_JPG\\wing_roughness.jpg
-map_d textures_JPG\\wing_alpha.jpg
+
 
 newmtl abdomen
 Ns 225.000000

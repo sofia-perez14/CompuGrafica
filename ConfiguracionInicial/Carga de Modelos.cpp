@@ -139,43 +139,47 @@ int main( )
 
         // Panda
         glm::mat4 modelPanda(1);
-        modelPanda = glm::translate(modelPanda, glm::vec3(-2.0f, 0.0f, -3.0f));
-        modelPanda = glm::scale(modelPanda, glm::vec3(0.8f));
+        modelPanda = glm::translate(modelPanda, glm::vec3(0.02f, 0.5f, -2.0f));
+		modelPanda = glm::rotate(modelPanda, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelPanda = glm::scale(modelPanda, glm::vec3(0.9f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPanda));
         panda.Draw(shader);
 
         // Mariposa
         glm::mat4 modelMariposa(1);
-        modelMariposa = glm::translate(modelMariposa, glm::vec3(1.5f, 1.5f, -2.0f));
+        modelMariposa = glm::translate(modelMariposa, glm::vec3(1.5f, 1.2f, -2.0f));
+		modelMariposa = glm::rotate(modelMariposa, glm::radians(-45.0f), glm::vec3(1.0f, 0.0f, 0.0f));
         modelMariposa = glm::scale(modelMariposa, glm::vec3(0.1f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMariposa));
         mariposa.Draw(shader);
 
         // Gecko
         glm::mat4 modelGecko(1);
-        modelGecko = glm::translate(modelGecko, glm::vec3(0.0f, -1.0f, -2.5f));
+        modelGecko = glm::translate(modelGecko, glm::vec3(0.5f, 0.0f, -2.0f));
         modelGecko = glm::scale(modelGecko, glm::vec3(0.2f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelGecko));
         gecko.Draw(shader);
 
         // Monster
         glm::mat4 modelMonster(1);
-        modelMonster = glm::translate(modelMonster, glm::vec3(2.5f, 0.0f, -4.0f));
-        modelMonster = glm::scale(modelMonster, glm::vec3(0.6f));
+        modelMonster = glm::translate(modelMonster, glm::vec3(2.5f, 0.0f, -2.0f));
+		modelMonster = glm::rotate(modelMonster, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelMonster = glm::scale(modelMonster, glm::vec3(0.4f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMonster));
         monster.Draw(shader);
 
         // Oveja
         glm::mat4 modelOveja(1);
-        modelOveja = glm::translate(modelOveja, glm::vec3(-1.5f, -0.5f, -2.5f));
+        modelOveja = glm::translate(modelOveja, glm::vec3(1.5f, 0.0f, -2.0f));
         modelOveja = glm::scale(modelOveja, glm::vec3(0.5f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelOveja));
         oveja.Draw(shader);
 
         // Comedor
         glm::mat4 modelComedor(1);
-        modelComedor = glm::translate(modelComedor, glm::vec3(0.0f, -1.5f, -2.0f));
-        modelComedor = glm::scale(modelComedor, glm::vec3(0.2f));
+        modelComedor = glm::translate(modelComedor, glm::vec3(-1.0f, 0.0f, -2.0f));
+        modelComedor = glm::rotate(modelComedor, glm::radians(-127.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+        modelComedor = glm::scale(modelComedor, glm::vec3(0.07f));
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelComedor));
         comedor.Draw(shader);
 
