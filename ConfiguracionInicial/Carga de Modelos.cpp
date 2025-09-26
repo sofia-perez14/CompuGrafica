@@ -1,7 +1,7 @@
-// Previo 6: Carga de modelos y cámara sintética
+// Practica 6: Carga de modelos y cámara sintética
 // Nombre: Perez Ortiz Sofia
 // Numero de cuenta: 319074806
-// Fecha de entrega: 21/09/2023
+// Fecha de entrega: 26/09/2023
 
 
 // Std. Includes
@@ -101,7 +101,12 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
-    Model dog((char*)"Models/RedDog.obj");
+	Model panda((char*)"Models/uploads_files_5154962_panda_LP.obj");
+    Model mariposa((char*)"Models/uploads_files_2618445_butterfly_free.obj");
+    Model gecko((char*)"Models/uploads_files_6098024_Gecko.obj");
+	Model monster((char*)"Models/uploads_files_6090113_CuteBlueMonster.obj");
+	Model oveja((char*)"Models/sheep01.obj");
+	Model comedor((char*)"Models/PetBowlOBJ.obj");
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
     
   
@@ -129,9 +134,51 @@ int main( )
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
 
         // Draw the loaded model
-        glm::mat4 model(1);
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-		dog.Draw(shader);
+
+        // Dibujar modelos con sus propias transformaciones 
+
+        // Panda
+        glm::mat4 modelPanda(1);
+        modelPanda = glm::translate(modelPanda, glm::vec3(-2.0f, 0.0f, -3.0f));
+        modelPanda = glm::scale(modelPanda, glm::vec3(0.8f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelPanda));
+        panda.Draw(shader);
+
+        // Mariposa
+        glm::mat4 modelMariposa(1);
+        modelMariposa = glm::translate(modelMariposa, glm::vec3(1.5f, 1.5f, -2.0f));
+        modelMariposa = glm::scale(modelMariposa, glm::vec3(0.1f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMariposa));
+        mariposa.Draw(shader);
+
+        // Gecko
+        glm::mat4 modelGecko(1);
+        modelGecko = glm::translate(modelGecko, glm::vec3(0.0f, -1.0f, -2.5f));
+        modelGecko = glm::scale(modelGecko, glm::vec3(0.2f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelGecko));
+        gecko.Draw(shader);
+
+        // Monster
+        glm::mat4 modelMonster(1);
+        modelMonster = glm::translate(modelMonster, glm::vec3(2.5f, 0.0f, -4.0f));
+        modelMonster = glm::scale(modelMonster, glm::vec3(0.6f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelMonster));
+        monster.Draw(shader);
+
+        // Oveja
+        glm::mat4 modelOveja(1);
+        modelOveja = glm::translate(modelOveja, glm::vec3(-1.5f, -0.5f, -2.5f));
+        modelOveja = glm::scale(modelOveja, glm::vec3(0.5f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelOveja));
+        oveja.Draw(shader);
+
+        // Comedor
+        glm::mat4 modelComedor(1);
+        modelComedor = glm::translate(modelComedor, glm::vec3(0.0f, -1.5f, -2.0f));
+        modelComedor = glm::scale(modelComedor, glm::vec3(0.2f));
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelComedor));
+        comedor.Draw(shader);
+
 
         // Swap the buffers
         glfwSwapBuffers( window );
