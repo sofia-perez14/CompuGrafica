@@ -14,21 +14,8 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Archivos de origen\Shader">
-      <UniqueIdentifier>{6ed548b4-afbd-473b-bd5d-dc1c6a5cc5c6}</UniqueIdentifier>
+      <UniqueIdentifier>{22c7f4ed-40b7-476f-bb54-d825c8904c2b}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Carga de Modelos.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Shader\modelLoading.frag">
-      <Filter>Archivos de origen\Shader</Filter>
-    </None>
-    <None Include="Shader\modelLoading.vs">
-      <Filter>Archivos de origen\Shader</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h">
@@ -37,5 +24,24 @@
     <ClInclude Include="Shader.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Texturizado.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Shader\lamp.frag">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
+    <None Include="Shader\lamp.vs">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
+    <None Include="Shader\modelLoading.frag">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
+    <None Include="Shader\modelLoading.vs">
+      <Filter>Archivos de origen\Shader</Filter>
+    </None>
   </ItemGroup>
 </Project>
