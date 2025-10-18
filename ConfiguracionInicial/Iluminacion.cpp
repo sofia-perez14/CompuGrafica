@@ -106,10 +106,7 @@ int main()
     Shader lampshader("Shader/lamp.vs", "Shader/lamp.frag");
     Shader lightingShader("Shader/lighting.vs", "Shader/lighting.frag");
 
-
-
     // Load models
-    /*Model red_dog((char*)"Models/RedDog.obj");*/
     Model panda((char*)"Models/uploads_files_5154962_panda_LP.obj");
     Model mariposa((char*)"Models/uploads_files_2618445_butterfly_free.obj");
     Model gecko((char*)"Models/uploads_files_6098024_Gecko.obj");
@@ -226,7 +223,7 @@ int main()
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Determinar color de la luz según rot
+        // Determinar color de la luz según la rotacion
         glm::vec3 ambientColor;
         glm::vec3 diffuseColor;
         glm::vec3 specularColor;
@@ -270,7 +267,6 @@ int main()
 
 
         // Draw the loaded model
-        
 
         glm::mat4 modelFondo(1);
         modelFondo = glm::scale(modelFondo, glm::vec3(2.0f));     // lo escalamos para hacerlo más grande
